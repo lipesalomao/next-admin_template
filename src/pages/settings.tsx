@@ -1,14 +1,14 @@
 import type { NextPage } from "next";
 import { Layout } from "../components/Layout";
 
-const Home: NextPage = () => {
+const Settings: NextPage = () => {
   return (
     <div>
-      <Layout title="Home" subtitle="Building template admin...">
+      <Layout title="Settings" subtitle="Manage settings">
         <h3>Content...</h3>
       </Layout>
     </div>
   );
 };
 
-export default Home;
+export default Settings;
