@@ -15,12 +15,12 @@ export const SideMenuItem = (props: ISideMenuItemProps) => {
       flex flex-col 
       justify-center 
       items-center h-20 w-200
-       text-gray-600
+        dark:text-gray-200
       ${props.className}
       `}
       >
         {props.icon}
-        <span className={`text-xs font-light`}>{props.text}</span>
+        <span className={`text-xs font-light `}>{props.text}</span>
       </a>
     );
   };
@@ -28,7 +28,7 @@ export const SideMenuItem = (props: ISideMenuItemProps) => {
   return (
     <li
       onClick={props.onClick}
-      className={`hover:bg-gray-300 cursor-pointer`}
+      className={`hover:bg-gray-300 cursor-pointer dark:hover:bg-gray-800`}
     >
       {props.url ? (
         <Link href={props.url}>{anchourRender()}</Link>

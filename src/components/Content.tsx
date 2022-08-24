@@ -7,6 +7,7 @@ export const Content = (props: IContentProps) => {
     <div
       className={`
       flex flex-col mt-7
+      dark:text-gray-300
     `}
     >
       {props.children}

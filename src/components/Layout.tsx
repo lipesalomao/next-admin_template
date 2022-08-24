@@ -10,7 +10,7 @@ interface ILayoputProps {
 
 export const Layout = (props: ILayoputProps) => {
   return (
-    <div className={`flex h-screen w-screen`}>
+    <div className={`dark flex h-screen w-screen`}>
       <SideMenu />
       <div
         className={`

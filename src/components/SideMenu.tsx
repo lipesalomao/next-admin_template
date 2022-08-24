@@ -7,6 +7,8 @@ export const SideMenu = () => {
     <aside
       className={`
     flex flex-col
+    bg-gray-200
+    dark:bg-gray-900
     `}
     >
       <div
@@ -15,7 +17,7 @@ export const SideMenu = () => {
         bg-gradient-to-r from-indigo-500 to-purple-800
         h-20 w-20
         `}
-        >
+      >
         <Logo />
       </div>
       <ul
@@ -33,12 +35,15 @@ export const SideMenu = () => {
       </ul>
       <ul>
         <SideMenuItem
-          onClick={() => { console.log('logout') }}
+          onClick={() => {
+            console.log("logout");
+          }}
           text="Logout"
           icon={LogoutIcon}
           className={`
-          text-red-600
+          text-red-600 dark:text-red-400
           hover:bg-red-400 hover:text-white
+          dark:hover:text-white
           `}
         />
       </ul>
