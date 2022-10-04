@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 interface IAppContextProps {
   theme?: string;
@@ -8,14 +8,16 @@ interface IAppContextProps {
 const AppContext = createContext<IAppContextProps>({});
 
 export function AppProvider({ children }: any) {
+  const [theme, setTheme] = useState("dark");
+
   function themeToggle() {
-    console.log("themeToggle");
+    setTheme(theme === "" ? "dark" : "");
   }
 
   return (
     <AppContext.Provider
       value={{
-        theme: "dark",
+        theme,
         themeToggle,
       }}
     >
