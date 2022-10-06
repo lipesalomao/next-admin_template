@@ -1,16 +1,27 @@
 import { useState } from "react";
 import { AuthInput } from "../components/auth/AuthInput";
+import { GoogleIcon, WarnIcon } from "../components/icons";
 
 const Login = () => {
   const [pageType, setPageType] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  function showError(msg: string, timeout: number = 5) {
+    setError(msg);
+    setTimeout(() => {
+      setError(null);
+    }, timeout * 1000);
+  }
 
   const submit = () => {
     if (pageType === "login") {
       // login
+      showError("Login not implemented yet");
     } else {
       // signup
+      showError("Signup not implemented yet");
     }
   };
 
@@ -43,6 +54,22 @@ const Login = () => {
           {pageType === "login" ? "Login" : "Sign Up"}
         </h1>
 
+        {error ? (
+          <div
+            className={`
+        flex bg-red-400 text-white py-3 px-5 my-2
+        border border-red-700 rounded-lg
+        `}
+          >
+            {WarnIcon}
+            <span className={`ml-2`}>
+              An error occured. Please try again later.
+            </span>
+          </div>
+        ) : (
+          false
+        )}
+
         <AuthInput
           label="Email"
           type="email"
@@ -70,10 +97,10 @@ const Login = () => {
           className={`
           w-full bg-white hover:bg-gray-300 text-black
         rounded-lg px-4 py-3 font-semibold mt-2 border-2 border-gray-300
-        transition duration-500
+        transition duration-500 flex gap-2 justify-center
           `}
         >
-          Login with Google
+          Login with Google {GoogleIcon}
         </button>
 
         {pageType === "login" ? (
