@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { AuthInput } from "../components/auth/AuthInput";
 import { GoogleIcon, WarnIcon } from "../components/icons";
+import useAuth from "../data/hook/useAuth";
 
 const Login = () => {
+  const { user, googleLogin } = useAuth();
+
   const [pageType, setPageType] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -94,6 +97,7 @@ const Login = () => {
           {pageType === "login" ? "Login" : "Signup"}
         </button>
         <button
+          onClick={googleLogin}
           className={`
           w-full bg-white hover:bg-gray-300 text-black
         rounded-lg px-4 py-3 font-semibold mt-2 border-2 border-gray-300
