@@ -6,7 +6,10 @@ import IUser from "../../model/User";
 
 interface IAuthContextProps {
   user?: IUser | null;
+  isLoading?: boolean;
+  register?: (email: string, password: string) => Promise<void>;
   googleLogin?: () => Promise<void>;
+  login?: (email: string, password: string) => Promise<void>;
   logout?: () => Promise<void>;
 }
 
@@ -53,6 +56,34 @@ export const AuthProvider = ({ children }: any) => {
     }
   }
 
+  async function register(email: string, password: string) {
+    try {
+      setIsLoading(true);
+      const response = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+
+      await sessionControl(response.user);
+      route.push("/");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function login(email: string, password: string) {
+    try {
+      setIsLoading(true);
+      const response = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+
+      await sessionControl(response.user);
+      route.push("/");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   async function googleLogin() {
     try {
       setIsLoading(true);
@@ -60,7 +91,7 @@ export const AuthProvider = ({ children }: any) => {
         .auth()
         .signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
-      sessionControl(response.user);
+      await sessionControl(response.user);
       route.push("/");
     } finally {
       setIsLoading(false);
@@ -83,13 +114,17 @@ export const AuthProvider = ({ children }: any) => {
       const authObserver = firebase.auth().onIdTokenChanged(sessionControl);
       return () => authObserver();
     }
+    setIsLoading(false);
   }, []);
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        isLoading,
+        register,
         googleLogin,
+        login,
         logout,
       }}
     >

@@ -4,7 +4,7 @@ import { GoogleIcon, WarnIcon } from "../components/icons";
 import useAuth from "../data/hook/useAuth";
 
 const Login = () => {
-  const { user, googleLogin } = useAuth();
+  const { register, login, googleLogin } = useAuth();
 
   const [pageType, setPageType] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
@@ -18,13 +18,15 @@ const Login = () => {
     }, timeout * 1000);
   }
 
-  const submit = () => {
-    if (pageType === "login") {
-      // login
-      showError("Login not implemented yet");
-    } else {
-      // signup
-      showError("Signup not implemented yet");
+  const submit = async () => {
+    try {
+      if (pageType === "login") {
+        await login!(email, password);
+      } else {
+        await register!(email, password);
+      }
+    } catch (err: any) {
+      showError(err?.message ?? "Unknown error");
     }
   };
 
