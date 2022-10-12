@@ -12,7 +12,7 @@ export const ToggleThemeButton = (props: IToggleThemeButtonProps) => {
       className={`
         hidden sm:flex items-center justify-start cursor-pointer
         bg-gradient-to-r from-yellow-300 to-yellow-600
-        w-14 lg:w-24 h-7 p-1 rounded-full
+        w-14 lg:w-24 h-5 p-1 rounded-full
         gap-2
         transition-all duration-300
         `}
@@ -41,7 +41,7 @@ export const ToggleThemeButton = (props: IToggleThemeButtonProps) => {
       className={`
       hidden sm:flex items-center justify-end cursor-pointer
         bg-gradient-to-r from-blue-500 to-blue-900
-        w-14 lg:w-24 h-7 p-1 rounded-full
+        w-14 lg:w-24 h-5 p-1 rounded-full
         gap-2
         transition-all duration-300
             `}

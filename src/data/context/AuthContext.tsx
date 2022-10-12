@@ -1,7 +1,7 @@
 import route from "next/router";
 import { createContext, useState } from "react";
 import firebase from "../../firebase/config";
-import IUser from "../../model/Usuario";
+import IUser from "../../model/User";
 
 interface IAuthContextProps {
   user?: IUser | null;

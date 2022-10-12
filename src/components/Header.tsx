@@ -1,6 +1,7 @@
 import useAppData from "../data/hook/useAppData";
 import { Title } from "./Title";
 import { ToggleThemeButton } from "./ToggleThemeButton";
+import { UserAvatar } from "./UserAvatar";
 
 interface IHeaderProps {
   title: string;
@@ -13,8 +14,9 @@ export const Header = (props: IHeaderProps) => {
   return (
     <div className={`flex`}>
       <Title title={props.title} subtitle={props.subtitle} />
-      <div className={`flex flex-grow justify-end`}>
+      <div className={`flex flex-grow justify-end items-center gap-3`}>
         <ToggleThemeButton theme={theme!} themeToggle={themeToggle!} />
+        <UserAvatar/>
       </div>
     </div>
   );
